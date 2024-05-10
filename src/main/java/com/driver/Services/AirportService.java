@@ -40,7 +40,7 @@ public class AirportService {
         }
         List<Airport> airportList=airportRepository.getAllAirportList();
         for(Airport airport:airportList){
-            if(ansCity == airport.getCity()){
+            if(airport.getCity()==ansCity){
                 return airport.getAirportName();
             }
         }

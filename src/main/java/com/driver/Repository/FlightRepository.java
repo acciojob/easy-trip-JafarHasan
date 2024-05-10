@@ -44,7 +44,7 @@ public class FlightRepository {
         if(flightPassengerDB.containsKey(flightId)) {
             Flight flight=flightDB.get(flightId);
 
-            List<Integer> passengerList = flightPassengerDB.get(flight);
+            List<Integer> passengerList = flightPassengerDB.get(flightId);
             if(passengerList.contains(passengerId)){
                 return "FAILURE";
             }
