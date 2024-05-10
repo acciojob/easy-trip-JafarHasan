@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,16 +32,20 @@ public class AirportService {
         //We need to get the starting airportName from where the flight will be taking off (Hint think of City variable if that can be of some use)
         //return null incase the flightId is invalid or you are not able to find the airportName
 
-        List<Flight> flightList=flightRepository.getAllFlightList();
-        City ansCity=null;
-        for(Flight flight:flightList){
-            if(flight.getFlightId()==flightId){
-                ansCity=flight.getFromCity();
+        List<Flight> flightslist = new ArrayList<>();
+        flightslist =flightRepository.getAllFlightList();
+
+        City anscity = null;
+        for(Flight flight : flightslist){
+            if(flight.getFlightId() == flightId){
+                anscity = flight.getFromCity();
             }
         }
-        List<Airport> airportList=airportRepository.getAllAirportList();
-        for(Airport airport:airportList){
-            if(airport.getCity()==ansCity){
+        List<Airport> airportslist = new ArrayList<>();
+        airportslist =airportRepository.getAllAirportList();
+
+        for(Airport airport : airportslist){
+            if(airport.getCity() == anscity){
                 return airport.getAirportName();
             }
         }
