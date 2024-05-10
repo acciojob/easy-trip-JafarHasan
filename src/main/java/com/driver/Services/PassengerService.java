@@ -32,27 +32,34 @@ public class PassengerService {
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
 
-        List<Airport> airportList=airportRepository.getAllAirportList();
-        for (Airport airport : airportList) {
+        List<Airport> airportslist = new ArrayList<>();
+        airportslist = airportRepository.getAllAirportList();
+
+        City city = null;
+
+        for(Airport airport : airportslist){
             if(airport.getAirportName().equals(airportName)){
-                City city=airport.getCity();
+                city = airport.getCity();
             }
         }
 
-        List<Flight> flightList=flightRepository.getAllFlightList();
-        if(flightList.isEmpty()) return 0;
+        List<Flight> flightslist = new ArrayList<>();
+        flightslist = flightRepository.getAllFlightList();
 
-        List<Flight> list=new ArrayList<>();
-        for(Flight flight:flightList){
+        if(flightslist.isEmpty()) return 0;
+
+        List<Flight> flights = new ArrayList<>();
+        for(Flight flight : flightslist){
             if(flight.getFlightDate().equals(date)){
-                list.add(flight);
+                flights.add(flight);
             }
         }
-        int cnt=0;
-        for(Flight flight:list){
-            cnt+=flightRepository.noOfTicketsBookForFlightId(flight.getFlightId());
+        int count = 0;
+        for(Flight flight : flights){
+            count += flightRepository.noOfTicketsBookForFlightId(flight.getFlightId());
         }
-        return cnt;
+
+        return count;
     }
 
 
