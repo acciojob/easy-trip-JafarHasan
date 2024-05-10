@@ -3,6 +3,8 @@ package com.driver.Services;
 import com.driver.Repository.AirportRepository;
 import com.driver.Repository.FlightRepository;
 import com.driver.Repository.PassengerRepository;
+import com.driver.model.Airport;
+import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import org.springframework.stereotype.Service;
@@ -30,12 +32,12 @@ public class PassengerService {
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
 
-//        List<Airport> airportList=airportRepository.getAllAirportList();
-//        for (Airport airport : airportList) {
-//            if(airport.getAirportName().equals(airportName)){
-//                City city=airport.getCity();
-//            }
-//        }
+        List<Airport> airportList=airportRepository.getAllAirportList();
+        for (Airport airport : airportList) {
+            if(airport.getAirportName().equals(airportName)){
+                City city=airport.getCity();
+            }
+        }
 
         List<Flight> flightList=flightRepository.getAllFlightList();
         if(flightList.isEmpty()) return 0;
