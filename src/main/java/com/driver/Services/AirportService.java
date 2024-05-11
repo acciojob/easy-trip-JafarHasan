@@ -45,7 +45,7 @@ public class AirportService {
         airportslist =airportRepository.getAllAirportList();
 
         for(Airport airport : airportslist){
-            if(airport.getCity() == anscity){
+            if(airport.getCity().equals(anscity)){
                 return airport.getAirportName();
             }
         }

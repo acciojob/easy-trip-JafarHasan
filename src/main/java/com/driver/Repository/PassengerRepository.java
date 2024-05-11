@@ -21,5 +21,4 @@ public class PassengerRepository {
         passengerDB.put(id,passenger);
         return "SUCCESS";
     }
-
 }
