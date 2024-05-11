@@ -110,11 +110,11 @@ public class FlightRepository {
 
     //for getShortestDurationOfPossibleBetweenTwoCities() method we need all flight list
     public List<Flight> getAllFlightList(){
-        List<Flight> flightList=new ArrayList<>();
-        for(Flight flight:flightDB.values()){
-            flightList.add(flight);
-
-        }
+        List<Flight> flightList= (List<Flight>) flightDB.values();
+//        for(Flight flight:flightDB.values()){
+//            flightList.add(flight);
+//
+//        }
         return flightList;
     }
     public int noOfTicketsBookForFlightId(int flightId){

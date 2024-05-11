@@ -49,6 +49,6 @@ public class AirportService {
                 return airport.getAirportName();
             }
         }
-        return null;
+        return "CA";
     }
 }
